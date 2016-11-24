@@ -167,9 +167,26 @@ class PassportController {
       });
     });
 
-    this._app.post('/login', passport.authenticate('local'), (req, res) => {
-      req.session.jwt = this._getTokenForUser(req.user);
-      res.redirect('/');
+    this._app.post('/login', (req, res, next) => {
+      passport.authenticate('local', (err, user, info) => {
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          return res.render('authenticate/login', {
+            error: (info ? info.message : err) || err
+          });
+        }
+        req.logIn(user, function (err) {
+          if (err) {
+            return res.render('authenticate/login', {
+              error: err.message || err
+            });
+          }
+          req.session.jwt = this._getTokenForUser(user);
+          res.redirect('/');
+        });
+      })(req, res, next);
     });
 
     this._app.get('/logout', (req, res) => {

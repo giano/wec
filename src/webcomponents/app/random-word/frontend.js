@@ -1,5 +1,5 @@
 // element registration
-requirejs(['api_caller', 'wec!polymer/polymer.html'], function (apiCaller) {
+requirejs(['api_caller', 'wec!polymer/polymer.html', 'wec!paper-button/paper-button.html'], function (apiCaller) {
   Polymer({
     is: "random-word",
 
@@ -12,11 +12,11 @@ requirejs(['api_caller', 'wec!polymer/polymer.html'], function (apiCaller) {
         value: "wordy"
       },
 
-      isHighlighted: {
+      isLoading: {
         type: Boolean,
         value: false,
         notify: true,
-        observer: '_highlightChanged'
+        observer: '_loadingChanged'
       }
     },
 
@@ -25,17 +25,17 @@ requirejs(['api_caller', 'wec!polymer/polymer.html'], function (apiCaller) {
     },
 
     _loadNewWord: function () {
-      this.isHighlighted = true;
+      this.isLoading = true;
 
       apiCaller.get(`${COMPONENT_MOUNTPOINT}/retrieve`).then((response) => {
         this.greeting = response;
-        this.isHighlighted = false;
+        this.isLoading = false;
       });
 
     },
 
-    _highlightChanged: function (value) {
-      this.toggleClass('highlighted', value);
+    _loadingChanged: function (value) {
+      this.$.random_word_button.disabled = value;
     }
   });
 });
