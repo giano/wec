@@ -1,0 +1,27 @@
+{
+  "name": "prova",
+  "description": "",
+  "main": "dist/backend/server.js",
+  "authors": [
+    "Stefano Valicchia <stefano.valicchia@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.7.0",
+    "zepto": "^1.1.6",
+    "requirejs-plugins": "^1.0.3",
+    "socket.io": "^1.6.0",
+    "bluebird": "^3.4.6",
+    "requirejs": "^2.3.2",
+    "paper-card": "PolymerElements/paper-card#^1.1.4",
+    "paper-button": "PolymerElements/paper-button#^1.0.14"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "frontend.d983ea7a0b281404d2ac.js": "eeaa9ee2c7985a800221db116fe64fb0",
+  "frontend.d983ea7a0b281404d2ac.js.map": "a2c2646c23ec6a120b460b1f95b9a3db",
+  "index.html": "564b19fe1a6d4056347bd73cf1fc9570",
+  "backend/server.js": "bd9db65c8f80cc7a6f469d44f1719038",
+  "backend/server.js.map": "85370da6bb92399265a085ce09d9a3ad",
+  "wec/app/base-app": "5df68429142ba43f47a6e75952858031",
+  "wec/app/base-app.html": "5df68429142ba43f47a6e75952858031",
+  "wec/app/base-app/": "5df68429142ba43f47a6e75952858031",
+  "wec/app/page-footer": "8d1fdea754f7192570d47d23ecbac503",
+  "wec/app/page-footer.html": "8d1fdea754f7192570d47d23ecbac503",
+  "wec/app/page-footer/": "8d1fdea754f7192570d47d23ecbac503",
+  "wec/app/page-header": "12a44977a758a4273560e78d59fcb477",
+  "wec/app/page-header.html": "12a44977a758a4273560e78d59fcb477",
+  "wec/app/page-header/": "12a44977a758a4273560e78d59fcb477",
+  "wec/app/random-word": "dc8f157f7b0aed19bdc443376f086731",
+  "wec/app/random-word.html": "dc8f157f7b0aed19bdc443376f086731",
+  "wec/app/random-word/": "dc8f157f7b0aed19bdc443376f086731"
+}

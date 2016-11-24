@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title= htmlWebpackPlugin.options.title
+    script.
+      ;(function initGlobalVariables(window){
+        window.apiMountPoint = '!{api_mount_point}';
+        window.webComponentsMountpoint = '!{htmlWebpackPlugin.options.webcomponents_mountpoint}';
+        window.jwtToken = '!{jwtToken}';
+        window.jwtTokenHeaderName = '!{jwt_token_header_name}';
+        window.requireAliases = !{JSON.stringify(require_aliases)};
+      })(window);
+
+    if (htmlWebpackPlugin.files.favicon)
+      link(rel="shortcut icon", href=htmlWebpackPlugin.files.favicon)
+
+    if (htmlWebpackPlugin.options.ie_compat)
+      meta(http-equiv="X-UA-Compatible", content="IE=" + htmlWebpackPlugin.options.ie_compat)
+
+    if (htmlWebpackPlugin.options.mobile)
+      meta(name="viewport", content="width=device-width, initial-scale=1")
+
+    each css in htmlWebpackPlugin.files.css || []
+      link(rel="stylesheet", type="text/css", href=css)
+
+    style.
+      body {transition: opacity ease-in 0.2s;}
+      body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; }
+
+    block style
+
+  body(unresolved)
+    base-app
+      block content
+
+      if (htmlWebpackPlugin.options.appMountId)
+        div(id=htmlWebpackPlugin.options.appMountId)
+
+      if (htmlWebpackPlugin.options.appMountIds && htmlWebpackPlugin.options.appMountIds.length > 0)
+        each appMountId in htmlWebpackPlugin.options.appMountIds
+          div(id=appMountId)
+
+      if (htmlWebpackPlugin.options.window)
+        each val, key in htmlWebpackPlugin.options.window
+          script (function(){window[!{key}] = !{JSON.stringify(val)};})();
+
+    div.hidden#scripts
+      script(src="/require.js", data-main="/start.js")
+      -
+        var js_files = (htmlWebpackPlugin.files.js || []).map(
+          function(js){
+            return {
+              path: js,
+              namefile: (js.replace(/^.*[\\\/]/, '').split('.').shift()).trim().toLowerCase()
+            }
+          }
+        );
+
+      each js in js_files
+        script(data-src=js.path, data-name=js.namefile).js-require
+
+      block scripts

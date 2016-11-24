@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  if (!loggedUser)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (loggedUser)
+    p You are currently logged in as #{loggedUser.username}
+    a(href="/logout") Logout
+
+  paper-button(raised, class="primary", on-tap="postLogin") Log In

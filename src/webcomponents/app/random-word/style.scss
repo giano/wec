@@ -1,0 +1,13 @@
+:host {
+  display: inline-block;
+  padding: 10px;
+  background: #dddddd;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+:host.highlighted {
+  background: #ff6600;
+  color: #ffffff;
+}

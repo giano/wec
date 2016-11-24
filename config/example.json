@@ -1,0 +1,116 @@
+{
+  "mongoose": {
+    "uri": "mongodb://127.0.0.1:27017/test"
+  },
+  "webcomponents": {
+    "mountpoint": "wec"
+  },
+  "debug": false,
+  "webpack": {
+    "html": {
+      "title": "Test",
+      "webcomponents_mountpoint": "wec",
+      "inject": false,
+      "mobile": true,
+      "minify": false,
+      "ie_compat": "edge",
+      "template": "src/views/index.pug",
+      "mainFrontendName": "frontend"
+    }
+  },
+  "security": {
+    "cookie_secure": false,
+    "passwordsalt": "$56klLO!",
+    "webtokensalt": "wakcy",
+    "sessionsalt": "andPepper",
+    "webtoken": {
+      "header": "x-jwt",
+      "audience": "audience.test.com",
+      "issuer": "issuer.test.com",
+      "algorithm": "HS256",
+      "param_name": "jwtoken",
+      "expires": "1d"
+    },
+    "admin": {
+      "username": "example",
+      "password": "example"
+    }
+  },
+  "router": {
+    "static_max_age": 31536000,
+    "static_dirs": [
+      "./dist/frontend",
+      "./assets",
+      "./bower_components"
+    ],
+    "shortcuts": [{
+      "route": "/require.js",
+      "shortname": "require",
+      "path": "./bower_components/requirejs/require.js"
+    }, {
+      "route": "/wec.js",
+      "shortname": "wec",
+      "babelize": true,
+      "path": "./src/frontend/wec.js"
+    }, {
+      "route": "/buster.js",
+      "shortname": "buster",
+      "babelize": true,
+      "path": "./src/frontend/buster.js"
+    }, {
+      "route": "/zepto.js",
+      "shortname": "zepto",
+      "path": "./bower_components/zepto/zepto.min.js"
+    }, {
+      "route": "/bluebird.js",
+      "shortname": "bluebird",
+      "path": "./bower_components/bluebird/js/browser/bluebird.core.min.js"
+    }, {
+      "route": "/webcomponents.js",
+      "shortname": "webcomponents",
+      "path": "./bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    }, {
+      "route": "/wec/polymer/polymer.html",
+      "cleanedroute": "wec!polymer/polymer.html",
+      "shortname": "polymer",
+      "path": "./bower_components/polymer/polymer.html"
+    }, {
+      "route": "/socket.io/socket.io.js",
+      "shortname": "socket.io",
+      "alias": true,
+      "path": "./bower_components/socket.io/lib/client.js"
+    }, {
+      "route": "/wec/polymer/polymer-mini.html",
+      "shortname": "polymer-mini",
+      "cleanedroute": "wec!polymer/polymer-mini.html",
+      "path": "./bower_components/polymer/polymer-mini.html"
+    }, {
+      "route": "/wec/polymer/polymer-micro.html",
+      "shortname": "polymer-micro",
+      "cleanedroute": "wec!polymer/polymer-micro.html",
+      "path": "./bower_components/polymer/polymer-micro.html"
+    }, {
+      "route": "/busters.json",
+      "cleanedroute": "json!/busters.json",
+      "shortname": "busters-micro",
+      "path": "./busters.json"
+    }, {
+      "route": "/start.js",
+      "shortname": "start",
+      "babelize": true,
+      "path": "./src/frontend/start.js"
+    }, {
+      "route": "/api_caller.js",
+      "shortname": "api_caller",
+      "babelize": true,
+      "path": "./src/frontend/api_caller.js"
+    }]
+  },
+  "morgan": "dev",
+  "app": {
+    "api_base": "api",
+    "http2": true,
+    "port": 3000,
+    "engine": "pug"
+  }
+}
